@@ -1,19 +1,25 @@
- 🌟 Influencer Affiliate Programme Portal
+# 🌟 Influencer Affiliate Programme Portal
 
 > A modern, full-stack web application connecting influencers with e-commerce platforms through an integrated affiliate management system.
 
- 📋 Table of Contents
+![React](https://img.shields.io/badge/React.js-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+
+---
+
+## 📋 Table of Contents
 
 - [About the Project](#-about-the-project)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
-- [Project Modules](#-project-modules)
 - [Getting Started](#-getting-started)
 - [Team](#-team)
 
+---
 
-
- 📌 About the Project
+## 📌 About the Project
 
 In today's rapidly growing digital commerce ecosystem, influencer marketing has become one of the most effective strategies for product promotion and brand visibility. However, many influencers and affiliate marketers face challenges such as:
 
@@ -26,9 +32,9 @@ The **Influencer Affiliate Programme Portal** solves these problems by providing
 
 ---
 
-✨ Features
+## ✨ Features
 
- For Influencers
+### For Influencers
 - 🔐 Secure registration and login
 - 🔗 Generate unique affiliate links for products
 - 📊 Real-time click and conversion tracking
@@ -36,7 +42,7 @@ The **Influencer Affiliate Programme Portal** solves these problems by providing
 - 📥 Request payouts and view transaction history
 - 📤 Export data and reports
 
- For Administrators
+### For Administrators
 - 👥 Manage influencer accounts
 - 📈 Monitor campaign activities
 - ✅ Approve/reject payout requests
@@ -44,7 +50,7 @@ The **Influencer Affiliate Programme Portal** solves these problems by providing
 
 ---
 
- 🛠 Tech Stack
+## 🛠 Tech Stack
 
 | Technology | Purpose |
 |---|---|
@@ -62,10 +68,12 @@ The **Influencer Affiliate Programme Portal** solves these problems by providing
 | **Postman** | API testing and debugging |
 | **XAMPP / MySQL Workbench** | Database management and local server setup |
 
+---
 
- 🚀 Getting Started
 
- Prerequisites
+## 🚀 Getting Started
+
+### Prerequisites
 
 Make sure you have the following installed:
 - [Node.js](https://nodejs.org/) (v18+)
@@ -107,7 +115,7 @@ npm start
 
 ---
 
- 👥 Team
+## 👥 Team
 
 | Name | Roll Number | Modules |
 |---|---|---|
@@ -115,7 +123,8 @@ npm start
 | **M Sai Chaitanya** | 2520090023 | Dashboard Analytics, Payout Management, Admin Panel |
 
 ---
- 📚 Academic Info
+
+## 📚 Academic Info
 
 | Field | Details |
 |---|---|

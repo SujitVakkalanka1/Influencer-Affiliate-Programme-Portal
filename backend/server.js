@@ -6,6 +6,11 @@ const authRoutes = require('./routes/authRoutes');
 const verifyToken = require('./middleware/authMiddleware');
 const authorizeRoles = require('./middleware/roleMiddleware');
 const campaignRoutes = require('./routes/campaignRoutes');
+const affiliateLinkRoutes = require('./routes/affiliateLinkRoutes');
+const conversionRoutes = require('./routes/conversionRoutes');
+const commissionRoutes = require('./routes/commissionRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const { trackAffiliateClickByCode } = require('./controllers/affiliateLinkController');
 const app = express();
 
 app.use(cors());
@@ -15,6 +20,11 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/campaigns', campaignRoutes);
+app.use('/api/affiliate-links', affiliateLinkRoutes);
+app.use('/api/conversions', conversionRoutes);
+app.use('/api/commissions', commissionRoutes);
+app.use('/api/admin', adminRoutes);
+app.get('/ref/:unique_code', trackAffiliateClickByCode);
 app.get('/profile', verifyToken, (req, res) => {
     res.json({
         success: true,

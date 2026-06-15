@@ -57,7 +57,7 @@ The **Influencer Affiliate Programme Portal** solves these problems by providing
 | **React.js** | Frontend user interface development |
 | **Node.js** | Backend runtime environment |
 | **Express.js** | API development and server-side routing |
-| **MySQL** | Database management system |
+| **Mongo DB** | Database management system |
 | **HTML5** | Structure of web pages |
 | **CSS3** | Styling and responsive design |
 | **JavaScript** | Client-side and server-side scripting |

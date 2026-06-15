@@ -1,137 +1,123 @@
-# 🌟 Influencer Affiliate Programme Portal
+# Influencer Affiliate Programme Portal - MongoDB Ready
 
-> A modern, full-stack web application connecting influencers with e-commerce platforms through an integrated affiliate management system.
+A full-stack influencer affiliate tracking portal using **React + Express + MongoDB**.
 
-![React](https://img.shields.io/badge/React.js-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+## Tech Stack
 
----
+### Frontend
+- React.js
+- Vite
+- Tailwind CSS
+- Axios
+- Recharts
 
-## 📋 Table of Contents
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT authentication
+- bcrypt password hashing
 
-- [About the Project](#-about-the-project)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Getting Started](#-getting-started)
-- [Team](#-team)
+## What Works
 
----
+- Register/login through Express APIs.
+- New users are saved in MongoDB.
+- Dashboard data is dynamic, not hardcoded frontend dummy data.
+- Admin can create campaigns.
+- Influencers can generate affiliate links.
+- Affiliate clicks are tracked through `/ref/:unique_code`.
+- Conversions calculate commission automatically.
+- Influencers can request payouts.
+- Admin can approve/reject payouts.
+- Red/black simplified UI is retained.
 
-## 📌 About the Project
+## MongoDB Setup
 
-In today's rapidly growing digital commerce ecosystem, influencer marketing has become one of the most effective strategies for product promotion and brand visibility. However, many influencers and affiliate marketers face challenges such as:
+You need either **local MongoDB Community Server** or **MongoDB Atlas**.
 
-- Absence of centralized dashboards
-- Difficulty in tracking affiliate performance
-- Delayed commission calculations
-- Lack of transparency in payout management
+### Option A: Local MongoDB
 
-The **Influencer Affiliate Programme Portal** solves these problems by providing a user-friendly web application with real-time tracking, interactive analytics, and a powerful admin panel.
+Install MongoDB Community Server and make sure the MongoDB service is running.
 
----
+Keep this in `backend/.env`:
 
-## ✨ Features
-
-### For Influencers
-- 🔐 Secure registration and login
-- 🔗 Generate unique affiliate links for products
-- 📊 Real-time click and conversion tracking
-- 💰 Monitor commission earnings via interactive dashboards
-- 📥 Request payouts and view transaction history
-- 📤 Export data and reports
-
-### For Administrators
-- 👥 Manage influencer accounts
-- 📈 Monitor campaign activities
-- ✅ Approve/reject payout requests
-- 🗄️ Maintain overall platform operations
-
----
-
-## 🛠 Tech Stack
-
-| Technology | Purpose |
-|---|---|
-| **React.js** | Frontend user interface development |
-| **Node.js** | Backend runtime environment |
-| **Express.js** | API development and server-side routing |
-| **MySQL** | Database management system |
-| **HTML5** | Structure of web pages |
-| **CSS3** | Styling and responsive design |
-| **JavaScript** | Client-side and server-side scripting |
-| **Bootstrap / Tailwind CSS** | Responsive UI components and styling |
-| **Chart.js** | Data visualization and analytics charts |
-| **Git & GitHub** | Version control and collaboration |
-| **VS Code** | Code editor and development environment |
-| **Postman** | API testing and debugging |
-| **XAMPP / MySQL Workbench** | Database management and local server setup |
-
----
-
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-Make sure you have the following installed:
-- [Node.js](https://nodejs.org/) (v18+)
-- [MySQL](https://www.mysql.com/) or [XAMPP](https://www.apachefriends.org/)
-- [Git](https://git-scm.com/)
-
-### Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/SujitVakkalanka1/Influencer-Affiliate-Programme-Portal.git
-
-# 2. Navigate to the project directory
-cd Influencer-Affiliate-Programme-Portal
-
-# 3. Install backend dependencies
-cd backend
-npm install
-
-# 4. Install frontend dependencies
-cd ../frontend
-npm install
-
-# 5. Configure your MySQL database
-# Create a .env file in the backend folder with:
-# DB_HOST=localhost
-# DB_USER=root
-# DB_PASSWORD=yourpassword
-# DB_NAME=affiliate_portal
-
-# 6. Start the backend server
-cd backend
-npm start
-
-# 7. Start the frontend
-cd ../frontend
-npm start
+```env
+MONGO_URI=mongodb://127.0.0.1:27017/influencer_affiliate_portal
 ```
 
----
+### Option B: MongoDB Atlas
 
-## 👥 Team
+Create a free Atlas cluster and paste your connection string into `backend/.env`:
 
-| Name | Roll Number | Modules |
-|---|---|---|
-| **Vakkalanka Sai Bhaskara Sujit** | 2520090085 | Auth, Affiliate Tracking, Admin Panel |
-| **M Sai Chaitanya** | 2520090023 | Dashboard Analytics, Payout Management, Admin Panel |
+```env
+MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/influencer_affiliate_portal?retryWrites=true&w=majority
+```
 
----
+## Quick Start on Windows
 
-## 📚 Academic Info
+Double-click in this order:
 
-| Field | Details |
-|---|---|
-| Course | Front End Development Frameworks & UI Engineering (25CS1201E) |
-| Term | 2025-26, Term-III |
-| Section | S5 |
+```txt
+1-install-all.bat
+2-start-backend.bat
+3-start-frontend.bat
+```
 
----
+Then open:
 
-> *This project is developed as part of the Front End Development Frameworks & UI Engineering course.*
+```txt
+http://localhost:5173
+```
+
+## Manual Start
+
+Terminal 1:
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Terminal 2:
+
+```bash
+npm install
+npm run dev
+```
+
+## Admin Login
+
+```txt
+Email: admin@portal.com
+Password: password
+```
+
+## MongoDB Collections
+
+The backend automatically creates/uses these MongoDB collections:
+
+```txt
+users
+campaigns
+affiliatelinks
+affiliateclicks
+conversions
+payoutrequests
+counters
+```
+
+The backend automatically seeds:
+
+- Admin user
+- Starter campaigns
+
+## Important
+
+No MySQL is used in this version. The database is MongoDB only.
+
+
+## If npm install fails with internal registry / ETIMEDOUT
+
+Run `CLEAN_INSTALL.bat`. This removes old lock files and node_modules, resets npm registry to `https://registry.npmjs.org/`, then installs frontend and backend dependencies again.

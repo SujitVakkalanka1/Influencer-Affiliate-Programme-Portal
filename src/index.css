@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #0b1120;
+  color: #e5e7eb;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+::selection {
+  background: rgba(220, 38, 38, 0.35);
+  color: #fff;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .font-heading {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .app-shell {
+    @apply min-h-screen bg-slate-950 text-slate-100;
+  }
+
+  .glass-panel {
+    @apply border border-slate-800 bg-slate-900;
+  }
+
+  .red-ring {
+    @apply focus:border-red-500 focus:ring-2 focus:ring-red-500/20 focus:outline-none;
+  }
+
+  .grid-pattern {
+    background: #0b1120;
+  }
+
+  .neo-card {
+    @apply rounded-xl border border-slate-800 bg-slate-900 shadow-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-wider text-slate-400;
+  }
+}

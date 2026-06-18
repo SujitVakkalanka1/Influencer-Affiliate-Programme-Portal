@@ -28,7 +28,10 @@ export default function LoginPage() {
       pushToast('Login successful');
       navigate(data.user.role === 'admin' ? '/admin' : '/dashboard');
     } catch (error) {
-      pushToast(error.response?.data?.message || 'Login failed', 'info');
+      pushToast(
+        error.response?.data?.message || 'Cannot reach the login service. Please try again shortly.',
+        'info',
+      );
     } finally {
       setLoading(false);
     }

@@ -17,24 +17,33 @@ const { trackAffiliateClickByCode } = require('./controllers/affiliateLinkContro
 
 const app = express();
 const PORT = Number(process.env.PORT || 5000);
+const allowedOrigins = new Set([
+    'http://localhost:5173',
+    'https://influencer-affiliate-programme-port.vercel.app',
+    ...String(process.env.CLIENT_URL || '')
+        .split(',')
+        .map((origin) => origin.trim().replace(/\/$/, ''))
+        .filter(Boolean)
+]);
 
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin(origin, callback) {
+        if (!origin || allowedOrigins.has(origin.replace(/\/$/, ''))) {
+            return callback(null, true);
+        }
+
+        return callback(new Error(`CORS blocked request from origin: ${origin}`));
+    },
     credentials: true
 }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.json({ success: true, message: 'Influencer Affiliate Programme API running' });
+    res.send('Backend is running');
 });
 
-app.get('/api/health', async (req, res) => {
-    try {
-        await db.query('SELECT 1');
-        res.json({ success: true, database: 'connected' });
-    } catch (error) {
-        res.status(500).json({ success: false, database: 'failed', message: error.message });
-    }
+app.get('/api/health', (req, res) => {
+    res.json({ message: 'API working' });
 });
 
 app.use('/api/auth', authRoutes);
@@ -52,8 +61,12 @@ app.use((req, res) => {
 });
 
 app.use((error, req, res, next) => {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Server error' });
+    console.error('Unhandled request error:', error.message);
+    const isCorsError = error.message.startsWith('CORS blocked request');
+    res.status(isCorsError ? 403 : 500).json({
+        success: false,
+        message: isCorsError ? error.message : 'Server error'
+    });
 });
 
 const startServer = async () => {
@@ -63,6 +76,7 @@ const startServer = async () => {
             console.log(`Server running on port ${PORT}`);
         });
     } catch (error) {
+        console.error('Backend startup failed:', error.message);
         process.exit(1);
     }
 };

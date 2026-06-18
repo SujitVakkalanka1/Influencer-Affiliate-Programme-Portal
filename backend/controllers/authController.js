@@ -80,9 +80,18 @@ const register = async (req, res) => {
             user
         });
     } catch (error) {
+        console.error('Registration failed:', error.message);
+
+        if (error.code === 11000) {
+            return res.status(409).json({
+                success: false,
+                message: 'Email already exists'
+            });
+        }
+
         return res.status(500).json({
             success: false,
-            message: error.message
+            message: 'Unable to register user. Please try again.'
         });
     }
 };
@@ -130,9 +139,10 @@ const login = async (req, res) => {
             user: cleanUser(user)
         });
     } catch (error) {
+        console.error('Login failed:', error.message);
         return res.status(500).json({
             success: false,
-            message: error.message
+            message: 'Unable to log in. Please try again.'
         });
     }
 };

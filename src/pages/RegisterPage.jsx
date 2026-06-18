@@ -28,7 +28,10 @@ export default function RegisterPage() {
       pushToast('Account created and saved in database');
       navigate('/dashboard');
     } catch (error) {
-      pushToast(error.response?.data?.message || 'Registration failed', 'info');
+      pushToast(
+        error.response?.data?.message || 'Cannot reach the registration service. Please try again shortly.',
+        'info',
+      );
     } finally {
       setLoading(false);
     }

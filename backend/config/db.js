@@ -109,7 +109,10 @@ function normalize(sql) {
 
 async function connectMongo() {
   if (mongoose.connection.readyState === 1) return;
-  const uri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/influencer_affiliate_portal';
+  const uri = process.env.MONGO_URI;
+  if (!uri) {
+    throw new Error('MONGO_URI is not configured');
+  }
   await mongoose.connect(uri, { serverSelectionTimeoutMS: 10000 });
   console.log('MongoDB connected');
 }
